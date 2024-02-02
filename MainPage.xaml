@@ -1,0 +1,37 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleApp.MainPage"
+             xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+    <StackLayout>
+        <Label Text="User Information" FontSize="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        <Entry Placeholder="Enter your name" Text="{Binding Name}" />
+        <Entry Placeholder="Enter your email" Text="{Binding Email}" />
+        <Entry Placeholder="Enter your phone number" Text="{Binding PhoneNumber}" />
+        <Button Text="Submit" Clicked="SubmitForm" />
+        <Label Text="Users Registry" FontSize="20" HorizontalOptions="CenterAndExpand" Margin="0,20,0,10" />
+        <ListView ItemsSource="{Binding SubmittedRecords}"
+                  SelectedItem="{Binding SelectedRecord}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Text="{Binding Name}" />
+                            <Label Grid.Column="1" Text="{Binding Email}" />
+                            <Label Grid.Column="2" Text="{Binding PhoneNumber}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Update Selected Record" Clicked="UpdateSelectedRecord" />
+    </StackLayout>
+</ContentPage>
